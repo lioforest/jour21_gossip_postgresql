@@ -31,34 +31,28 @@
 
 
     <div class="container">
-      <h1>Auteur : <%=@user.first_name %> <%=@user.last_name %> </h1>
-
+      <h1>Ville N°: <%=@city.id %></h1>
 <br><br>
         <div>
             <div class="alert alert-dark alert-dismissible fade show" role="alert">
-              Identifiant N° : <%=@user.id %><br>
+              Ville : <%=@city.name %>
+              <hr>
+              Code postal : <%=@city.zip_code %> 
+              <hr>
+              Créé le <%= @city.created_at.strftime("%d-%m-%Y %H:%M:%S") %> <br>
+              Modifié le : <%= @city.updated_at.strftime("%d-%m-%Y %H:%M:%S") %>
+              <hr>
+        <p>
 
-             <hr>
-            <%=@user.first_name %> <%=@user.last_name %> 
-            <br>
-            <br>
-            
-            Détail : <%=@user.description %> 
-            <br>
-            <br>
-            E-mail : <%=@user.email %> 
-            <br>
-            <br>
-            Age :    <%=@user.age %> 
-            <br>
-            <br>
-            Ville : <a href ="/cities/<%= @user.city_id %>/" class="alert-link"><%= @user.city.name %> </a> 
-            <br>
-
+          Voici la liste des potins qui ont été créés depuis cette ville : <br>
+            <% @city.users.each do |user| %>
+              <% user.gossips.each do |gossip| %>
+              <%= link_to "Titre : #{gossip.title}", gossip_path(gossip.id)%><br/>
+              <% end %>
+            <% end %>
+</p> 
 
             </div>
-
-              
           <p><br><br> </p>
         </div>
     </div>

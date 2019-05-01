@@ -1,9 +1,7 @@
 class GossipsController < ApplicationController
 
-
 	def show
 		@gossip = Gossip.find(params[:id])
-
 	end
 
 	def new
@@ -16,15 +14,49 @@ class GossipsController < ApplicationController
 
 		if @gossip.save # essaie de sauvegarder en base @gossip
 		    # si ça marche, il redirige vers la page d'index du site
-		    redirect_to gossip_path(success: true)
+
+		    flash[:notice] = "Votre gossip a bien été ajouté"
+		    redirect_to root_path(success: true)
    			else
     		# sinon, il render la view new (qui est celle sur laquelle on est déjà)
-			
+		    flash[:notice] = "Erreur dans la création, merci de remplir les champs demandés"
 
 			render 'new'
 		end
 	end
 
-  
+
+	def edit
+		@gossip = Gossip.find(params[:id])
+	end
+
+	def update
+		@gossip = Gossip.find(params[:id])
+		gossip_params = params.require(:gossip).permit(:title,:content)
+
+	  if @gossip.update(gossip_params)
+
+	    redirect_to root_path
+	  else
+	    flash[:notice] = "Votre gossip n'a pas été modifié correctement, veuillez recommercer !"
+	   
+	    redirect_to edit_gossip_path
+	  end
+	end
+
+	def destroy
+	
+		@gossip = Gossip.find(params[:id])
+
+	  if @gossip.destroy
+
+	    redirect_to root_path
+	  else
+	    flash[:notice] = "Votre gossip n'a pas été supprimé correctement, veuillez recommercer !"
+	   
+	    redirect_to edit_gossip_path
+	  end
+	end
+
 end
 

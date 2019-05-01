@@ -39,11 +39,19 @@
               <hr>
               <%=@gossip.content %> 
               <hr>
-              Créé par <%=@gossip.user.first_name %>  <%=@gossip.user.last_name %> le <%= @gossip.created_at.strftime("%d-%m-%Y %H:%M:%S") %> <br>
+              Auteur <a href ="/users/<%= @gossip.user.id %>/" class="alert-link"><%= @gossip.user.first_name %> </a>   <br><br>
+              Ville de l'auteur
+     <a href ="/cities/<%=@gossip.user.city_id %>/" class="alert-link"><%= @gossip.user.city.name %> </a> 
+              <br><br>
+
+              Créé le <%= @gossip.created_at.strftime("%d-%m-%Y %H:%M:%S") %> <br>
               Modifié le : <%= @gossip.updated_at.strftime("%d-%m-%Y %H:%M:%S") %>
               <hr>
 
-              <a href ="/users/<%= @gossip.user.id %>/" class="alert-link"><%= @gossip.user.first_name %> </a> 
+            <a href="<%=edit_gossip_path(@gossip.id)%>" class="btn btn-primary">Modifié</a>
+  
+            <a href="<%=gossip_path(@gossip.id)%>" class="btn btn-danger" data-confirm="ëtes-vous sûr ?" data-method="DELETE">Supprimer</a>
+         
 
             </div>
           <p><br><br> </p>

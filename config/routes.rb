@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :gossips
-
+  resources :users
+  resources :cities
+  resources :gossips do
+    resources :comments, only: [:new, :create, :index, :destroy]
+  end
   get 'static_pages/contact', to: 'static_pages#contact'
 
   get 'static_pages/team', to: 'static_pages#team'

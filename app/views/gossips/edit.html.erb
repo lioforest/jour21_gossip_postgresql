@@ -31,36 +31,36 @@
 
 
     <div class="container">
-      <h1>Auteur : <%=@user.first_name %> <%=@user.last_name %> </h1>
-
+      <h1>Editer le Potin n°: <%= @gossip.id %> </h1>
 <br><br>
-        <div>
-            <div class="alert alert-dark alert-dismissible fade show" role="alert">
-              Identifiant N° : <%=@user.id %><br>
-
-             <hr>
-            <%=@user.first_name %> <%=@user.last_name %> 
-            <br>
-            <br>
-            
-            Détail : <%=@user.description %> 
-            <br>
-            <br>
-            E-mail : <%=@user.email %> 
-            <br>
-            <br>
-            Age :    <%=@user.age %> 
-            <br>
-            <br>
-            Ville : <a href ="/cities/<%= @user.city_id %>/" class="alert-link"><%= @user.city.name %> </a> 
-            <br>
+    <%= form_for @gossip do |f| %>
 
 
-            </div>
+       <div class ="form_group">
 
-              
-          <p><br><br> </p>
+        <label> Titre du gossip </label>
+
+        <%= f.text_field :title, class: 'form-control' %>
+        
         </div>
+
+       <div class ="form_group">
+
+        <label> Le texte du Gossip :  </label>
+
+        <%= f.text_area :content, class: 'form-control' %>
+        </div>
+
+        <br><br>
+       <div class ="form_group">
+
+
+        <button type="submit" class="btn btn-primary">Valider la modification du gossip </button>
+        </div>
+
+        
+
+      <% end%>
     </div>
   </section>
 
