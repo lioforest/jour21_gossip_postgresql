@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'bonjour/:id', to: 'welcome#bonjour_page'
 
-  get 'auteur/:id', to: 'detail#auteur'
+  get 'users/:id', to: 'users#show'
 
   root 'home_page#index'
 

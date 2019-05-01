@@ -26,16 +26,18 @@
     <img class="img-fluid d-block mx-auto" src="http://www.lioforest.com/images/logo_potin.jpg" alt="">
   </header>
 
+
+  
   <!-- Content section -->
   <section class="py-5">
     <%= form_tag url_for(action: 'create'), method: "post" do %>
 
-      <%= label_tag 'Title' %>
-      <%= text_field_tag 'title', @post.title %>
+      <%= label_tag 'Titre du gossip :' %>
+      <%= text_field_tag 'title', @gossip_title %>
       <br /> <br />
 
-      <%= label_tag 'Content' %>
-      <%= text_area_tag 'content', @post.body %>
+      <%= label_tag 'Détail du gossip :' %>
+      <%= text_area_tag 'content', @gossip_content %>
       <br /> <br />
 
       <br /> <br />

@@ -8,7 +8,7 @@ class Gossip < ApplicationRecord
 
  #critères de validation
    validates :title,
-	    presence: true,
+	    presence: true ,
 	    length: { in: 4..14 }
 	validates :content, presence: true
 
