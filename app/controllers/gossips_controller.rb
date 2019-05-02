@@ -1,5 +1,8 @@
 class GossipsController < ApplicationController
 
+ before_action :authenticate_user, only: [:create, :new, :edit, :destroy]
+ before_action :is_author?, only: [:edit, :update, :destroy]
+
 	def show
 		@gossip = Gossip.find(params[:id])
 	end
@@ -9,7 +12,7 @@ class GossipsController < ApplicationController
 	end
 
 	def create
-		@gossip = Gossip.new(title: params[:title], content: params[:content], user: User.find(11))
+		@gossip = Gossip.new(title: params[:title], content: params[:content], user_id: session[:user_id])
 		#avec xxx qui sont les données obtenues à partir du formulaire
 
 		if @gossip.save # essaie de sauvegarder en base @gossip
@@ -59,4 +62,6 @@ class GossipsController < ApplicationController
 	end
 
 end
+
+private
 

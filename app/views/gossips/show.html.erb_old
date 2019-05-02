@@ -57,34 +57,6 @@
           <p><br><br> </p>
         </div>
     </div>
-
-    <div class="container">
-      <h2>Liste des commentaires : </h2>
-<br><br>
-        <div>
-            <div class="alert alert-dark alert-dismissible fade show" role="alert">
-              <hr>
-
-            <% @gossip.comment.each do |comment| %>
-                <%=comment.id %> - <%=comment.content %> <br>
-                commentaire créé par <%=comment.user.first_name %>
-                <br>                 <br>
-
-            <a href="<%=edit_gossip_comment_path(@gossip.id, comment.id)%>" class="btn btn-primary">Modifié</a>
-
-                        <hr>
-
-            <% end %>
-</p> 
-
-
-            </div>
-          <p><br><br> </p>
-        </div>
-    </div>
-
-
-
   </section>
 
 

@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gossip Project by lyon's team - Baptiste, léo & Lionel</title>
+  <title@gossip Project by lyon's team - Baptiste, léo & Lionel</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,44 +26,30 @@
     <img class="img-fluid d-block mx-auto" src="http://www.lioforest.com/images/logo_potin.jpg" alt="">
   </header>
 
-  <!-- Content section -->
-  <section class="py-5">
 
-
-    <div class="container">
-      <h1>Bienvenue cher utilisateur!</h1>
-      <br>
-      <h2>Ajoutez votre propre Gossip :</h2>
-      <br>
-
-            <a href="<%=new_gossip_path%>" class="btn btn-primary">Ajouter un gossip</a>
-
-      <br>
-      <br>
-
-      <h2>Voici la liste des potins à ce jour :</h2>
-
-        <div>
-          <% @gossip.each.with_index do |gossip, i| %>
-            <div class="alert alert-dark alert-dismissible fade show" role="alert">
-              <a href ="/gossips/<%= i + 1 %>/" class="alert-link"><%= gossip.title %> </a> 
-              <hr>
-              Créé par <%= gossip.user.first_name %><br><br>
-
-            <a href="<%=gossip_path(gossip.id)%>" class="btn btn-primary">Détail</a>
-
-            <a href="<%=edit_gossip_path(gossip.id)%>" class="btn btn-primary">Modifié</a>
   
-            <a href="<%=gossip_path(gossip.id)%>" class="btn btn-danger" data-confirm="ëtes-vous sûr ?" data-method="DELETE">Supprimer</a>
-
-            </div>
+  <!-- Content section -->
 
 
+  <section class="py-5">
+    <%= form_tag url_for(action: 'create'), method: "post" do %>
 
-          <% end %>             
-          <p><br><br> </p>
+       <div class ="form_group">
+
+         <%= label_tag 'Votre e-mail :' %>
+          <%= text_field_tag 'email', @user_email %>
+          <br /> <br />
+
+          <%= label_tag 'Votre mot de passe :' %>
+          <%= password_field_tag 'password', @user_password %>
+          <br /> <br />
+
+        <button type="submit" class="btn btn-primary">Se connecter </button>
+
         </div>
-    </div>
+
+    <% end %>
+
   </section>
 
 
